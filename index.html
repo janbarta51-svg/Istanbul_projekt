@@ -39,9 +39,174 @@
     .entry p:last-child{margin-bottom:0}
     footer{text-align:center;padding:30px 4px 4px;color:var(--muted);font-size:.82rem}
     @media(min-width:620px){.links{grid-template-columns:1fr 1fr}.entry{padding:30px}.entry h3{font-size:1.85rem}}
+  
+    .menu-toggle {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1002;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-content: center;
+      gap: 5px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: transform .22s ease, opacity .22s ease;
+    }
+
+    .menu-toggle.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(47, 41, 36, 0.42);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    .menu-overlay.is-visible {
+      opacity: 1;
+    }
+
+    .side-menu {
+      position: fixed;
+      inset: 0 auto 0 0;
+      z-index: 1001;
+      width: min(75vw, 360px);
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+      box-shadow: 16px 0 40px rgba(47, 41, 36, .16);
+      transform: translateX(-102%);
+      transition: transform .25s ease;
+      overflow-y: auto;
+    }
+
+    .side-menu.is-open {
+      transform: translateX(0);
+    }
+
+    .side-menu-inner {
+      min-height: 100%;
+      padding: 82px 20px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .side-menu-title {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .day-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .day-menu a,
+    .menu-top-link {
+      display: block;
+      padding: 13px 12px;
+      border-radius: 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .day-menu a.is-current {
+      font-weight: 800;
+      background: var(--background);
+    }
+
+    .menu-top-link {
+      margin-top: auto;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+      padding-top: 20px;
+      font-weight: 700;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    .entry {
+      scroll-margin-top: 76px;
+    }
+
+    .scroll-top {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 900;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--text);
+      color: white;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity .2s ease, transform .2s ease;
+      cursor: pointer;
+    }
+
+    .scroll-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
-<body>
+<body id="nahoru">
+
+  <button class="menu-toggle" type="button" aria-label="Otevřít menu" aria-controls="side-menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="menu-overlay" hidden></div>
+
+  <aside class="side-menu" id="side-menu" aria-hidden="true">
+    <div class="side-menu-inner">
+      <div class="side-menu-title">Cesta do Istanbulu</div>
+      <nav class="day-menu" aria-label="Navigace mezi dny"></nav>
+      <a class="menu-top-link" href="#nahoru">Nahoru</a>
+    </div>
+  </aside>
+
 <main class="page">
   <header class="hero">
     <p class="eyebrow">Cykloexpedice 2026</p>
@@ -49,23 +214,20 @@
     <p class="subtitle">Denní zápisky z cesty na kole z Bystřice nad Pernštejnem až do Istanbulu.</p>
   </header>
 
-  <section class="notice">
-    <strong>Texty vznikají s pomocí umělé inteligence</strong>
-    <p>Jednotlivé zápisy jsou vytvořené z hlasových zpráv a následně přepsané a upravené pomocí AI. Mohou se v nich proto objevit chyby, nepřesnosti nebo zvláštní vyjadřování.</p>
-  </section>
+
 
   <nav class="links">
     <a class="button secondary" href="https://photos.app.goo.gl/o1hL74NHd8bfpzPy5" target="_blank" rel="noopener noreferrer">
       <span><small>Google Fotky</small><strong>Fotky z cesty</strong></span><span class="arrow">↗</span>
     </a>
     <a class="button" href="https://mapy.com/s/bukekeveda" target="_blank" rel="noopener noreferrer">
-      <span><small>Aktualizováno večer</small><strong>Mapa další etapy</strong></span><span class="arrow">↗</span>
+      <span><small>Mapy.cz</small><strong>Jednotlivé etapy</strong></span><span class="arrow">↗</span>
     </a>
   </nav>
 
   <div class="section-header"><p>Deník</p><h2>Zápisky z cesty</h2></div>
 
-  <article class="entry">
+  <article class="entry" id="den1" data-day="1">
     <span class="entry-number">Den 1</span>
     <h3>Bystřice → Brno (Lesná)</h3>
     <p>První den expedice začal ještě zastávkou na úřadu práce v Bystřici. Nakonec se ale ukázalo, že registrace není potřeba, protože už mám domluvenou brigádu. Pak už jsme konečně vyrazili.</p>
@@ -76,7 +238,7 @@
     <p>První den je za námi. Zítra máme v plánu první opravdu dlouhou etapu a chtěli bychom poprvé překonat hranici 100 kilometrů za den.</p>
   </article>
 
-  <article class="entry">
+  <article class="entry" id="den2" data-day="2">
     <span class="entry-number">Den 2</span>
     <h3>Brno → Svätý Ján (Slovensko)</h3>
     <p>Druhý den jsme vyrazili z Brna něco po osmé ráno. Nejdřív jsme se propletli městem po cyklostezkách, které nás mile překvapily – průjezd Brnem byl nakonec mnohem příjemnější, než jsme čekali.</p>
@@ -89,7 +251,7 @@
     <p>Večer jsme dorazili na Slovensko, kde jsme našli klidné místo na přespání u rybníka, který zřejmě využívají místní rybáři. Počkali jsme, až se setmí, postavili stan a druhý den expedice tím skončil.</p>
   </article>
 
-  <article class="entry">
+  <article class="entry" id="den3" data-day="3">
     <span class="entry-number">Den 3</span>
     <h3>Svätý Ján → Šamorín</h3>
 
@@ -108,7 +270,120 @@
     <p>Večer jsme dorazili k vodnímu dílu Gabčíkovo, kde jsme našli místo na přespání. Postavili jsme stan, najedli se a šli brzy spát, abychom byli připravení na další den.</p>
   </article>
 
+  <article class="entry" id="den4" data-day="4">
+    <span class="entry-number">Den 4</span>
+    <h3>Šamorín → Moča</h3>
+
+    <p>Čtvrtý den začal dost ztuha. Probudil jsem se úplně rozlámaný, bolela mě hlavně stehna a ztuhlou jsem měl drtivou většinu kloubů. Po pořádné snídani přišla ještě jedna premiéra celé výpravy – první ranní sraní v lese.</p>
+
+    <p>Asi za pět kilometrů mělo být golfové hřiště, kde jsme si chtěli dát kávu a dobít telefony. Jenže jsme ho nějak přejeli. Místo toho jsme zastavili v malé vesnici v podniku jménem Retro Presso. Majitel byl trochu překvapený, že mluvíme česky, a tehdy nám došlo, že jsme na jihu Slovenska, kde většina místních mluví maďarsky. Káva byla výborná a od obsluhy jsme dostali i vodu na cestu.</p>
+
+    <p>Poté jsme dorazili k vodnímu dílu Gabčíkovo. Prošli jsme si informační centrum, viděli film o celé stavbě a o tom, jak funguje, a měli jsme štěstí – právě připlouvala nákladní loď. Mohli jsme tak sledovat plavební komory v provozu. Zavření vrat bylo působivé, ale pak už následovalo patnáct minut pomalého napouštění vody, což bylo přece jen o něco méně akční. Takže jsme asi po dvou minutách pokračovali dál.</p>
+
+    <p>Tušili jsme, že přijde bouřka, ale i tak nás docela zaskočila. Začali jsme hledat místo, kam bychom mohli zalézt pod střechu. Přijeli jsme ke dvěma samotám uprostřed polí a nejdřív stáli pod stromy. Když se ale opravdu rozpršelo, přelezli jsme zamčenou bránu i přes výstrahu „monitorováno kamerami“.</p>
+
+    <p>Seděli jsme pod pergolou jen pár minut, když Šikůvka najednou řekla: „Hele… tamhle sedí vlčák.“ Tak jsme se takticky vzdálili zpátky za bránu. A co myslíte? Nechal tam někdo rukavice? I když se pes zdál docela přátelský, rozhodl jsem se mu je tam nechat.</p>
+
+    <p>V Komárně jsme měli výborný kebab a nakoupili večeři i snídani. Protože rukavice zůstaly u pejska, zamířili jsme také do cykloobchodu. Nejenže jsem si koupil nové, krásně červené cyklistické rukavice, které jsou mnohem pohodlnější než ty původní, ale v servisu mi také seřídili zadní brzdu, která konečně přestala pískat. Jako bonus si nás vyfotili na svůj Facebook, protože si prý fotí všechny cyklisty ze zahraničí.</p>
+
+    <p>Po přeháňce jsme pokračovali dál. Většinu dne jsme jeli po dlouhé protipovodňové hrázi vybudované společně s vodním dílem Gabčíkovo. Čekaly nás další dlouhé kilometry téměř po rovině.</p>
+
+    <p>Cestou jsme narazili také na pozůstatky římského tábora z prvního století před naším letopočtem.</p>
+
+    <p>Na noc jsme zůstali schovaní za protipovodňovou hrází. Díky tomu, že se její okolí pravidelně udržuje, jsme našli parádní místo na spaní.</p>
+  </article>
+
   <footer>© 2026 Cesta do Istanbulu</footer>
 </main>
+
+  <button class="scroll-top" type="button" aria-label="Nahoru">↑</button>
+
+
+  <script>
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.side-menu');
+      const overlay = document.querySelector('.menu-overlay');
+      const dayMenu = document.querySelector('.day-menu');
+      const entries = [...document.querySelectorAll('.entry[data-day]')];
+      const topButton = document.querySelector('.scroll-top');
+
+      entries.forEach((entry) => {
+        const day = entry.dataset.day;
+        const link = document.createElement('a');
+        link.href = `#den${day}`;
+        link.textContent = `${day}. den`;
+        link.dataset.target = `den${day}`;
+        dayMenu.appendChild(link);
+      });
+
+      const openMenu = () => {
+        menu.classList.add('is-open');
+        overlay.hidden = false;
+        requestAnimationFrame(() => overlay.classList.add('is-visible'));
+        toggle.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('menu-open');
+      };
+
+      const closeMenu = () => {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-visible');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('menu-open');
+        window.setTimeout(() => {
+          if (!menu.classList.contains('is-open')) overlay.hidden = true;
+        }, 250);
+      };
+
+      toggle.addEventListener('click', () => {
+        menu.classList.contains('is-open') ? closeMenu() : openMenu();
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      menu.addEventListener('click', (event) => {
+        if (event.target.closest('a')) closeMenu();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      const links = [...dayMenu.querySelectorAll('a')];
+      const setCurrentDay = () => {
+        let current = entries[0];
+        const marker = window.scrollY + window.innerHeight * 0.28;
+
+        entries.forEach((entry) => {
+          if (entry.offsetTop <= marker) current = entry;
+        });
+
+        links.forEach((link) => {
+          link.classList.toggle('is-current', link.dataset.target === current.id);
+        });
+      };
+
+      const updateTopButton = () => {
+        topButton.classList.toggle('is-visible', window.scrollY > 350);
+      };
+
+      window.addEventListener('scroll', () => {
+        setCurrentDay();
+        updateTopButton();
+      }, { passive: true });
+
+      topButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      setCurrentDay();
+      updateTopButton();
+    })();
+  </script>
+
 </body>
 </html>
