@@ -189,6 +189,23 @@
       transform: translateY(0);
     }
 
+  
+    .day-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 720px;
+      margin-top: 24px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      background: var(--surface);
+    }
+
+    .day-photo[hidden] {
+      display: none;
+    }
+
   </style>
 </head>
 <body id="nahoru">
@@ -326,6 +343,44 @@
       const dayMenu = document.querySelector('.day-menu');
       const entries = [...document.querySelectorAll('.entry[data-day]')];
       const topButton = document.querySelector('.scroll-top');
+
+      const addDayPhotos = () => {
+        const extensions = ['jpg', 'jpeg', 'png', 'webp'];
+
+        entries.forEach((entry) => {
+          if (entry.querySelector('.day-photo')) return;
+
+          const day = entry.dataset.day;
+          const image = document.createElement('img');
+          image.className = 'day-photo';
+          image.alt = `Fotografie z ${day}. dne`;
+          image.loading = 'lazy';
+          image.hidden = true;
+
+          let extensionIndex = 0;
+
+          const tryNextExtension = () => {
+            if (extensionIndex >= extensions.length) {
+              image.remove();
+              return;
+            }
+
+            image.src = `${day}.${extensions[extensionIndex]}`;
+            extensionIndex += 1;
+          };
+
+          image.addEventListener('load', () => {
+            image.hidden = false;
+          });
+
+          image.addEventListener('error', tryNextExtension);
+          entry.appendChild(image);
+          tryNextExtension();
+        });
+      };
+
+      addDayPhotos();
+
 
       entries.forEach((entry) => {
         const day = entry.dataset.day;
