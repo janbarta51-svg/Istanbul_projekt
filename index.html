@@ -189,7 +189,6 @@
       transform: translateY(0);
     }
 
-  
     .day-photo {
       display: block;
       width: 100%;
@@ -200,13 +199,46 @@
       object-fit: cover;
       box-shadow: var(--shadow);
       background: var(--surface);
+      cursor: zoom-in;
     }
 
-    .day-photo[hidden] {
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
       display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(20, 18, 16, 0.94);
     }
 
-  </style>
+    .lightbox.is-open { display: flex; }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      color: #211d19;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    body.lightbox-open { overflow: hidden; }
+
+</style>
 </head>
 <body id="nahoru">
 
@@ -253,6 +285,8 @@
     <p>Překvapivě se celý den jelo velmi dobře. Nohy nebolely a forma byla lepší, než jsme čekali. Nejtěžší úsek ale přišel úplně na závěr. Výjezd na Lesnou byl pořádný kopec a místy jsem musel kolo tlačit.</p>
     <p>Po příjezdu nás čekala ještě poslední zkouška – dostat naložená kola do bytu. Nakonec jsme je vytáhli výtahem, vysprchovali se a vyrazili na zaslouženou večeři. Já jsem si dal burger, Nikola pizzu.</p>
     <p>První den je za námi. Zítra máme v plánu první opravdu dlouhou etapu a chtěli bychom poprvé překonat hranici 100 kilometrů za den.</p>
+    <img class="day-photo" src="1.jpg" alt="Fotografie z 1. dne" loading="lazy" data-full="1.jpg">
+
   </article>
 
   <article class="entry" id="den2" data-day="2">
@@ -266,6 +300,8 @@
     <p>Za Břeclaví už se začala ozývat únava. Kvůli bolesti zadku jsem si vzal dva Brufeny a šlapal dál.</p>
     <p>Velkým překvapením dne bylo překročení hranic do Rakouska. Rozdíl v kvalitě silnic byl okamžitě znát – jako by se všechno posunulo o deset úrovní výš. Dvacet kilometrů v Rakousku byla radost jet.</p>
     <p>Večer jsme dorazili na Slovensko, kde jsme našli klidné místo na přespání u rybníka, který zřejmě využívají místní rybáři. Počkali jsme, až se setmí, postavili stan a druhý den expedice tím skončil.</p>
+    <img class="day-photo" src="2.jpg" alt="Fotografie z 2. dne" loading="lazy" data-full="2.jpg">
+
   </article>
 
   <article class="entry" id="den3" data-day="3">
@@ -285,6 +321,8 @@
     <p>Ještě jsme se zastavili v obchodním centru doplnit zásoby na další den a odměnili se nanukem. Pak už jsme pokračovali dál po dlouhé protipovodňové hrázi. Kilometry ubíhaly téměř po rovině, s výhledy na krajinu po obou stranách.</p>
 
     <p>Večer jsme dorazili k vodnímu dílu Gabčíkovo, kde jsme našli místo na přespání. Postavili jsme stan, najedli se a šli brzy spát, abychom byli připravení na další den.</p>
+    <img class="day-photo" src="3.jpg" alt="Fotografie z 3. dne" loading="lazy" data-full="3.jpg">
+
   </article>
 
   <article class="entry" id="den4" data-day="4">
@@ -308,6 +346,8 @@
     <p>Cestou jsme narazili také na pozůstatky římského tábora z prvního století před naším letopočtem.</p>
 
     <p>Na noc jsme zůstali schovaní za protipovodňovou hrází. Díky tomu, že se její okolí pravidelně udržuje, jsme našli parádní místo na spaní.</p>
+    <img class="day-photo" src="4.jpg" alt="Fotografie z 4. dne" loading="lazy" data-full="4.jpg">
+
   </article>
 
   <article class="entry" id="den5" data-day="5">
@@ -327,6 +367,8 @@
     <p>Dnešní etapa nabídla také jeden z mála větších kopců v Maďarsku. Vyšlapali jsme přibližně čtyři sta výškových metrů a hned je zase sjeli dolů. Část cesty vedla po poměrně frekventovaných silnicích, ale všechno jsme zvládli bez problémů.</p>
 
     <p>Do Budapešti jsme dorazili odpoledne. Překvapilo nás, jak dobře se po městě jezdí na kole. Cyklistických pruhů je tu spousta a průjezd centrem byl mnohem příjemnější, než jsme čekali. Cestou jsme obdivovali také impozantní budovu maďarského parlamentu.</p>
+    <img class="day-photo" src="5.jpg" alt="Fotografie z 5. dne" loading="lazy" data-full="5.jpg">
+
   </article>
 
   <footer>© 2026 Cesta do Istanbulu</footer>
@@ -343,43 +385,6 @@
       const dayMenu = document.querySelector('.day-menu');
       const entries = [...document.querySelectorAll('.entry[data-day]')];
       const topButton = document.querySelector('.scroll-top');
-
-      const addDayPhotos = () => {
-        const extensions = ['jpg', 'jpeg', 'png', 'webp'];
-
-        entries.forEach((entry) => {
-          if (entry.querySelector('.day-photo')) return;
-
-          const day = entry.dataset.day;
-          const image = document.createElement('img');
-          image.className = 'day-photo';
-          image.alt = `Fotografie z ${day}. dne`;
-          image.loading = 'lazy';
-          image.hidden = true;
-
-          let extensionIndex = 0;
-
-          const tryNextExtension = () => {
-            if (extensionIndex >= extensions.length) {
-              image.remove();
-              return;
-            }
-
-            image.src = `${day}.${extensions[extensionIndex]}`;
-            extensionIndex += 1;
-          };
-
-          image.addEventListener('load', () => {
-            image.hidden = false;
-          });
-
-          image.addEventListener('error', tryNextExtension);
-          entry.appendChild(image);
-          tryNextExtension();
-        });
-      };
-
-      addDayPhotos();
 
 
       entries.forEach((entry) => {
@@ -450,6 +455,36 @@
         updateTopButton();
       }, { passive: true });
 
+
+      const lightbox = document.querySelector('.lightbox');
+      const lightboxImage = lightbox.querySelector('img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+
+      const openLightbox = (image) => {
+        lightboxImage.src = image.dataset.full || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImage.src = '';
+        document.body.classList.remove('lightbox-open');
+      };
+
+      document.querySelectorAll('.day-photo').forEach((image) => {
+        image.addEventListener('click', () => openLightbox(image));
+        image.addEventListener('error', () => image.remove());
+      });
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
       topButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -458,6 +493,12 @@
       updateTopButton();
     })();
   </script>
+
+
+  <div class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Zavřít fotografii">×</button>
+    <img src="" alt="">
+  </div>
 
 </body>
 </html>
