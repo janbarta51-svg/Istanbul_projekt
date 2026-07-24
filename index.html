@@ -285,7 +285,7 @@
     <p>Překvapivě se celý den jelo velmi dobře. Nohy nebolely a forma byla lepší, než jsme čekali. Nejtěžší úsek ale přišel úplně na závěr. Výjezd na Lesnou byl pořádný kopec a místy jsem musel kolo tlačit.</p>
     <p>Po příjezdu nás čekala ještě poslední zkouška – dostat naložená kola do bytu. Nakonec jsme je vytáhli výtahem, vysprchovali se a vyrazili na zaslouženou večeři. Já jsem si dal burger, Nikola pizzu.</p>
     <p>První den je za námi. Zítra máme v plánu první opravdu dlouhou etapu a chtěli bychom poprvé překonat hranici 100 kilometrů za den.</p>
-    <img class="day-photo" src="1.jpg" alt="Fotografie z 1. dne" loading="lazy" data-full="1.jpg">
+    <img class="day-photo" src="1.jpg" alt="Fotografie z 1. dne" loading="lazy" data-full="1.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
 
   </article>
 
@@ -300,7 +300,7 @@
     <p>Za Břeclaví už se začala ozývat únava. Kvůli bolesti zadku jsem si vzal dva Brufeny a šlapal dál.</p>
     <p>Velkým překvapením dne bylo překročení hranic do Rakouska. Rozdíl v kvalitě silnic byl okamžitě znát – jako by se všechno posunulo o deset úrovní výš. Dvacet kilometrů v Rakousku byla radost jet.</p>
     <p>Večer jsme dorazili na Slovensko, kde jsme našli klidné místo na přespání u rybníka, který zřejmě využívají místní rybáři. Počkali jsme, až se setmí, postavili stan a druhý den expedice tím skončil.</p>
-    <img class="day-photo" src="2.jpg" alt="Fotografie z 2. dne" loading="lazy" data-full="2.jpg">
+    <img class="day-photo" src="2.jpg" alt="Fotografie z 2. dne" loading="lazy" data-full="2.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
 
   </article>
 
@@ -321,7 +321,7 @@
     <p>Ještě jsme se zastavili v obchodním centru doplnit zásoby na další den a odměnili se nanukem. Pak už jsme pokračovali dál po dlouhé protipovodňové hrázi. Kilometry ubíhaly téměř po rovině, s výhledy na krajinu po obou stranách.</p>
 
     <p>Večer jsme dorazili k vodnímu dílu Gabčíkovo, kde jsme našli místo na přespání. Postavili jsme stan, najedli se a šli brzy spát, abychom byli připravení na další den.</p>
-    <img class="day-photo" src="3.jpg" alt="Fotografie z 3. dne" loading="lazy" data-full="3.jpg">
+    <img class="day-photo" src="3.jpg" alt="Fotografie z 3. dne" loading="lazy" data-full="3.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
 
   </article>
 
@@ -346,7 +346,7 @@
     <p>Cestou jsme narazili také na pozůstatky římského tábora z prvního století před naším letopočtem.</p>
 
     <p>Na noc jsme zůstali schovaní za protipovodňovou hrází. Díky tomu, že se její okolí pravidelně udržuje, jsme našli parádní místo na spaní.</p>
-    <img class="day-photo" src="4.jpg" alt="Fotografie z 4. dne" loading="lazy" data-full="4.jpg">
+    <img class="day-photo" src="4.jpg" alt="Fotografie z 4. dne" loading="lazy" data-full="4.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
 
   </article>
 
@@ -367,7 +367,7 @@
     <p>Dnešní etapa nabídla také jeden z mála větších kopců v Maďarsku. Vyšlapali jsme přibližně čtyři sta výškových metrů a hned je zase sjeli dolů. Část cesty vedla po poměrně frekventovaných silnicích, ale všechno jsme zvládli bez problémů.</p>
 
     <p>Do Budapešti jsme dorazili odpoledne. Překvapilo nás, jak dobře se po městě jezdí na kole. Cyklistických pruhů je tu spousta a průjezd centrem byl mnohem příjemnější, než jsme čekali. Cestou jsme obdivovali také impozantní budovu maďarského parlamentu.</p>
-    <img class="day-photo" src="5.jpg" alt="Fotografie z 5. dne" loading="lazy" data-full="5.jpg">
+    <img class="day-photo" src="5.jpg" alt="Fotografie z 5. dne" loading="lazy" data-full="5.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
 
   </article>
 
@@ -376,6 +376,11 @@
 
   <button class="scroll-top" type="button" aria-label="Nahoru">↑</button>
 
+
+  <div class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Zavřít fotografii">×</button>
+    <img src="" alt="">
+  </div>
 
   <script>
     (() => {
@@ -457,10 +462,11 @@
 
 
       const lightbox = document.querySelector('.lightbox');
-      const lightboxImage = lightbox.querySelector('img');
+      const lightboxImage = lightbox ? lightbox.querySelector('img') : null;
       const lightboxClose = document.querySelector('.lightbox-close');
 
       const openLightbox = (image) => {
+        if (!lightbox || !lightboxImage) return;
         lightboxImage.src = image.dataset.full || image.src;
         lightboxImage.alt = image.alt;
         lightbox.classList.add('is-open');
@@ -469,6 +475,7 @@
       };
 
       const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
         lightbox.classList.remove('is-open');
         lightbox.setAttribute('aria-hidden', 'true');
         lightboxImage.src = '';
@@ -480,10 +487,12 @@
         image.addEventListener('error', () => image.remove());
       });
 
-      lightboxClose.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) closeLightbox();
-      });
+      if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+      if (lightbox) {
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) closeLightbox();
+        });
+      }
 
       topButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -493,12 +502,5 @@
       updateTopButton();
     })();
   </script>
-
-
-  <div class="lightbox" aria-hidden="true">
-    <button class="lightbox-close" type="button" aria-label="Zavřít fotografii">×</button>
-    <img src="" alt="">
-  </div>
-
 </body>
 </html>
