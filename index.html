@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -24,21 +27,184 @@
     .notice strong{display:block;margin-bottom:6px}
     .notice p{margin:0;color:var(--muted);font-size:.95rem}
     .links{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:34px}
-    .button{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:70px;padding:16px 18px;border-radius:16px;background:var(--text);color:#fff;text-decoration:none;box-shadow:var(--shadow)}
-    .button.secondary{background:var(--accent)}
-    .button small{display:block;opacity:.72;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-    .button strong{font-size:1.04rem}
-    .arrow{font-size:1.45rem}
+    .journey-link{
+      display:grid;
+      grid-template-columns:48px minmax(0,1fr) auto;
+      align-items:center;
+      gap:14px;
+      min-height:84px;
+      padding:15px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      color:var(--text);
+      text-decoration:none;
+      box-shadow:var(--shadow);
+      transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+    }
+    .journey-link:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(47,41,36,.13)}
+    .journey-link:focus-visible{outline:3px solid rgba(143,95,58,.35);outline-offset:3px}
+    .journey-link--photos{background:#fff}
+    .journey-link--map{border-color:#1eae00;background:linear-gradient(135deg,#34c817,#1eae00);color:#fff}
+    .journey-link-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:14px}
+    .journey-link--map .journey-link-icon{padding:2px}
+    .journey-link-logo{display:block;width:100%;height:100%;object-fit:contain}
+    .journey-link--map .journey-link-logo{filter:drop-shadow(0 3px 6px rgba(17,95,0,.28))}
+    .journey-link-copy{min-width:0;line-height:1.2}
+    .journey-link-copy strong{display:block;font-size:1.04rem}
+    .journey-link-copy small{display:block;margin-top:5px;color:var(--muted);font-size:.78rem;font-weight:700}
+    .journey-link--map .journey-link-copy small{color:rgba(255,255,255,.82)}
+    .journey-link-arrow{font-size:1.4rem;line-height:1;transition:transform .2s ease}
+    .journey-link:hover .journey-link-arrow{transform:translate(2px,-2px)}
     .section-header{margin:0 4px 16px}
     .section-header p{margin:0 0 3px;color:var(--accent);font-size:.74rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
     .section-header h2{margin:0;font-size:2rem;line-height:1.1;letter-spacing:-.035em}
-    .entry{margin-bottom:18px;padding:22px 18px}
-    .entry-number{display:inline-block;margin-bottom:10px;color:var(--accent);font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-    .entry h3{margin:0 0 20px;font-size:1.55rem;line-height:1.15;letter-spacing:-.025em}
-    .entry p{margin:0 0 17px}
-    .entry p:last-child{margin-bottom:0}
+    .entry{
+      margin-bottom:18px;
+      overflow:hidden;
+    }
+
+    .entry summary{
+      list-style:none;
+    }
+
+    .entry summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .entry-summary{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:20px 18px;
+      cursor:pointer;
+      user-select:none;
+      transition:background .2s ease;
+    }
+
+    .entry-summary:hover{
+      background:rgba(143,95,58,.045);
+    }
+
+    .entry-summary:focus-visible{
+      outline:3px solid rgba(143,95,58,.32);
+      outline-offset:-3px;
+    }
+
+    .entry-heading{
+      display:block;
+      min-width:0;
+    }
+
+    .entry-meta{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:7px 12px;
+      margin-bottom:7px;
+    }
+
+    .entry-number{
+      display:inline-block;
+      margin:0;
+      color:var(--accent);
+      font-size:.75rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .entry-date{
+      color:var(--muted);
+      font-size:.82rem;
+      font-weight:700;
+    }
+
+    .entry-title{
+      display:block;
+      margin-bottom:5px;
+      font-size:1.35rem;
+      font-weight:800;
+      line-height:1.15;
+      letter-spacing:-.025em;
+    }
+
+    .entry-route{
+      display:block;
+      color:var(--muted);
+      font-size:1rem;
+      font-weight:700;
+      line-height:1.35;
+    }
+
+    .entry-route--primary{
+      color:var(--text);
+      font-size:1.35rem;
+      line-height:1.2;
+      letter-spacing:-.025em;
+    }
+
+    .entry-route-arrow{
+      padding:0 .15em;
+      color:var(--accent);
+    }
+
+    .entry-toggle{
+      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      width:36px;
+      height:36px;
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--text);
+      font-size:1.4rem;
+      line-height:1;
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease;
+    }
+
+    .entry[open] .entry-toggle{
+      transform:rotate(45deg);
+      border-color:var(--text);
+      background:var(--text);
+      color:#fff;
+    }
+
+    .entry-content{
+      padding:0 18px 22px;
+      border-top:1px solid var(--line);
+    }
+
+    .entry-content::before{
+      display:block;
+      height:20px;
+      content:"";
+    }
+
+    .entry-content p{
+      margin:0 0 17px;
+    }
+
+    .entry-content p:last-child{
+      margin-bottom:0;
+    }
+
     footer{text-align:center;padding:30px 4px 4px;color:var(--muted);font-size:.82rem}
-    @media(min-width:620px){.links{grid-template-columns:1fr 1fr}.entry{padding:30px}.entry h3{font-size:1.85rem}}
+    @media(min-width:620px){
+      .links{grid-template-columns:1fr 1fr}
+      .entry-summary{padding:24px 30px}
+      .entry-content{padding:0 30px 30px}
+      .entry-title,
+      .entry-route--primary{font-size:1.7rem}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .journey-link,.journey-link-arrow{transition:none}
+    }
   
     .menu-toggle {
       position: fixed;
@@ -144,7 +310,7 @@
 
     .day-menu a.is-current {
       font-weight: 800;
-      background: var(--background);
+      background: var(--bg);
     }
 
     .menu-top-link {
@@ -237,7 +403,6 @@
     }
 
     body.lightbox-open { overflow: hidden; }
-
 </style>
 </head>
 <body id="nahoru">
@@ -266,214 +431,87 @@
 
 
   <nav class="links">
-    <a class="button secondary" href="https://photos.app.goo.gl/o1hL74NHd8bfpzPy5" target="_blank" rel="noopener noreferrer">
-      <span><small>Google Fotky</small><strong>Fotky z cesty</strong></span><span class="arrow">↗</span>
+    <a class="journey-link journey-link--photos" href="https://photos.app.goo.gl/o1hL74NHd8bfpzPy5" target="_blank" rel="noopener noreferrer" aria-label="Otevřít fotky z cesty v novém okně">
+      <span class="journey-link-icon" aria-hidden="true">
+        <img class="journey-link-logo" src="{{ '/media/photos-logo.svg' | relative_url }}" alt="">
+      </span>
+      <span class="journey-link-copy"><strong>Fotky z cesty</strong><small>Otevřít album</small></span>
+      <span class="journey-link-arrow" aria-hidden="true">↗</span>
     </a>
-    <a class="button" href="https://mapy.com/s/bukekeveda" target="_blank" rel="noopener noreferrer">
-      <span><small>Mapy.cz</small><strong>Jednotlivé etapy</strong></span><span class="arrow">↗</span>
+    <a class="journey-link journey-link--map" href="https://mapy.com/s/bukekeveda" target="_blank" rel="noopener noreferrer" aria-label="Otevřít trasu cesty v novém okně">
+      <span class="journey-link-icon" aria-hidden="true">
+        <img class="journey-link-logo" src="{{ '/media/mapy-logo.svg' | relative_url }}" alt="">
+      </span>
+      <span class="journey-link-copy"><strong>Trasa cesty</strong><small>Prohlédnout etapy</small></span>
+      <span class="journey-link-arrow" aria-hidden="true">↗</span>
     </a>
   </nav>
 
   <div class="section-header"><p>Deník</p><h2>Zápisky z cesty</h2></div>
 
-  <article class="entry" id="den1" data-day="1">
-<span class="entry-number">Den 1</span>
-<h3>Bystřice nad Pernštejnem → Brno (Lesná)</h3>
-<p>Jednoho dne jsem dostal šílený nápad dojet na kole z Bystřice nad Pernštejnem do Istanbulu. Tak jsem sbalil kolo, naházel na něj věci na kempování, vzal přítelkyni a prakticky s nulovými zkušenostmi vyjel na tuto výpravu. Ty si teď můžeš přečíst, jak nám to jde.</p>
-<p>Trasa vedla z Bystřice přes Štěpánov a Nedvědici. V místní kavárně jsme si dali kávu se zákuskem – první pauzu na cestě. Pokračovali jsme podél řeky Svratky směrem na Předklášteří, kde přišla na řadu první zmrzlina výpravy. Dostala hodnocení 8 z 10. Ty dva body jsem si schválně nechal do rezervy, kdyby nás po cestě čekala ještě lepší.</p>
-<p>Z Tišnova jsme pokračovali přes Moravskou Knínici a Kuřim až do České u Brna. Cestou jsme se zastavili v Decathlonu, kde jsme dokoupili vybavení, které se před odjezdem nestihlo pořídit – cyklistický dres, kraťasy, mazání na řetěz, světla a další drobnosti.</p>
-<p>Překvapivě se celý den jelo velmi dobře. Nohy nebolely a forma byla lepší, než jsme čekali. Nejtěžší úsek ale přišel úplně na závěr. Výjezd na Lesnou, kde jsme poslední kopec museli vytlačit.</p>
-<p>Po příjezdu nás čekala ještě poslední zkouška – dostat naložená kola do bytu. Nakonec jsme je vytáhli výtahem, vysprchovali se a vyrazili na zaslouženou večeři v restauraci, abychom doplnili kalorie.</p>
-<p>První den je za námi. Zítra máme v plánu první opravdu dlouhou etapu a chtěli bychom poprvé překonat hranici 100 kilometrů za den.</p>
-<img class="day-photo" src="1.jpg" alt="Fotografie z 1. dne" loading="lazy" data-full="1.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-</article>
+  {% assign visible_days = site.days | where: "published", true | sort: "day" %}
 
-  <article class="entry" id="den2" data-day="2">
-    <span class="entry-number">Den 2</span>
-    <h3>Brno → Svätý Ján (Slovensko)</h3>
-    <p>Druhý den jsme vyrazili z Brna něco po osmé ráno. Nejdřív jsme se propletli městem po cyklostezkách, které nás mile překvapily – průjezd Brnem byl nakonec mnohem příjemnější, než jsme čekali.</p>
-    <p>Ještě před odjezdem na jih jsme si dali ranní kávu a zastavili se v cykloobchodě, kde jsme dokoupili dva náhradní řetězy. Pak už následoval dlouhý přesun směrem k rakouským hranicím.</p>
-    <p>V Židlochovicích přišla první zmrzlina dne. Oproti včerejšku tentokrát jen 6 z 10. Nebyla špatná, ale na vítěze výpravy rozhodně zatím nestačí.</p>
-    <p>Přes velké horko jsme pokračovali dál na jih. Cestou se znovu ukázalo, že Mapy.cz občas umí překvapit. Místy nás vedly zbytečně složitě jen po cyklostezkách, přestože by se dalo jet jednodušeji po silnici.</p>
-    <p>Od Staroviček jsme přejeli kolem Novomlýnských nádrží, které nás nijak zvlášť nenadchly. Lednici i Břeclav jsme naopak projeli téměř bez zastavení. V Břeclavi jsme jen rychle nakoupili zásoby, protože ve městě bylo opravdu hodně lidí a chtěli jsme co nejdřív pokračovat.</p>
-    <p>Za Břeclaví už se začala ozývat únava. Kvůli bolesti zadku jsem si vzal dva Brufeny a šlapal dál.</p>
-    <p>Velkým překvapením dne bylo překročení hranic do Rakouska. Rozdíl v kvalitě silnic byl okamžitě znát – jako by se všechno posunulo o deset úrovní výš. Dvacet kilometrů v Rakousku byla radost jet.</p>
-    <p>Večer jsme dorazili na Slovensko, kde jsme našli klidné místo na přespání u rybníka, který zřejmě využívají místní rybáři. Počkali jsme, až se setmí, postavili stan a druhý den expedice tím skončil.</p>
-    <img class="day-photo" src="2.jpg" alt="Fotografie z 2. dne" loading="lazy" data-full="2.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
+  {% for trip_day in visible_days %}
+    {% capture route_text %}{{ trip_day.from | strip }} → {{ trip_day.to | strip }}{% endcapture %}
+    {% assign route_text = route_text | strip %}
+    {% assign show_title = false %}
 
-  </article>
+    {% if trip_day.title and trip_day.title != empty and trip_day.title != route_text %}
+      {% assign show_title = true %}
+    {% endif %}
 
-  <article class="entry" id="den3" data-day="3">
-    <span class="entry-number">Den 3</span>
-    <h3>Svätý Ján → Šamorín</h3>
+    <details
+      class="entry"
+      id="den{{ trip_day.day }}"
+      data-day="{{ trip_day.day }}"
+    >
+      <summary class="entry-summary">
+        <span class="entry-heading">
+          <span class="entry-meta">
+            <span class="entry-number">
+              Den {{ trip_day.day }}
+            </span>
 
-    <p>Ráno jsme vyrazili krátce po osmé. Poprvé jsem neměl zdržení a Nikola na mě nemusela čekat, i když se zdálo, že už začínala být trochu nervózní. Po noci ve stanu jsem se probudil celý ztuhlý. Bolel mě zadek, zápěstí a chvíli trvalo, než jsem se rozhýbal. Nikola na tom ale byla výrazně lépe.</p>
+            <time
+              class="entry-date"
+              datetime="{{ trip_day.date | date: "%Y-%m-%d" }}"
+            >
+              {{ trip_day.date | date: "%-d. %-m. %Y" }}
+            </time>
+          </span>
 
-    <p>Ze začátku jsme se motali po cyklostezkách směrem na Malacky. Hned ráno mě potkala první drobná smůla – v obchodě jsem zapomněl cyklistickou rukavici. Když jsem si toho všiml, musel jsem se asi tři kilometry vracet. Aspoň malý bonus do denního nájezdu.</p>
+          {% if show_title %}
+            <span class="entry-title">
+              {{ trip_day.title | escape }}
+            </span>
+          {% endif %}
 
-    <p>V Malackách jsme si dali dobrou kávu a Nikola mezitím řešila klasický cyklistický problém – odřené sedací partie. To je detail, který prý nemám moc rozmazávat.</p>
+          <span class="entry-route{% unless show_title %} entry-route--primary{% endunless %}">
+            {{ trip_day.from | escape }}
+            <span class="entry-route-arrow">→</span>
+            {{ trip_day.to | escape }}
+          </span>
+        </span>
 
-    <p>Pak jsme pokračovali směrem na Devín. Cyklostezka byla příjemná, i když nás na chvíli vedla kolem skládky. Samotný Devín ale stál za to. Dorazili jsme právě na oběd, prošli si hrad a užili si výhled na soutok Moravy a Dunaje. Tím vlastně začala další velká etapa naší cesty – odteď nás bude Dunaj provázet ještě hodně dlouho.</p>
+        <span class="entry-toggle" aria-hidden="true">+</span>
+      </summary>
 
-    <p>Bratislavou jsme projeli bez větších problémů. Přes most jsme přejeli na druhý břeh, kde bylo mnohem víc zeleně a jelo se příjemněji. Přejezdy přes mosty měly svoje kouzlo a město nás mile překvapilo.</p>
+      <div class="entry-content">
+        {{ trip_day.content }}
 
-    <p>Ještě jsme se zastavili v obchodním centru doplnit zásoby na další den a odměnili se nanukem. Pak už jsme pokračovali dál po dlouhé protipovodňové hrázi. Kilometry ubíhaly téměř po rovině, s výhledy na krajinu po obou stranách.</p>
-
-    <p>Večer jsme dorazili k vodnímu dílu Gabčíkovo, kde jsme našli místo na přespání. Postavili jsme stan, najedli se a šli brzy spát, abychom byli připravení na další den.</p>
-    <img class="day-photo" src="3.jpg" alt="Fotografie z 3. dne" loading="lazy" data-full="3.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-
-  </article>
-
-  <article class="entry" id="den4" data-day="4">
-    <span class="entry-number">Den 4</span>
-    <h3>Šamorín → Moča</h3>
-
-    <p>Čtvrtý den začal dost ztuha. Probudil jsem se úplně rozlámaný, bolela mě hlavně stehna a ztuhlou jsem měl drtivou většinu kloubů. Po pořádné snídani přišla ještě jedna premiéra celé výpravy – první ranní sraní v lese.</p>
-
-    <p>Asi za pět kilometrů mělo být golfové hřiště, kde jsme si chtěli dát kávu a dobít telefony. Jenže jsme ho nějak přejeli. Místo toho jsme zastavili v malé vesnici v podniku jménem Retro Presso. Majitel byl trochu překvapený, že mluvíme česky, a tehdy nám došlo, že jsme na jihu Slovenska, kde většina místních mluví maďarsky. Káva byla výborná a od obsluhy jsme dostali i vodu na cestu.</p>
-
-    <p>Poté jsme dorazili k vodnímu dílu Gabčíkovo. Prošli jsme si informační centrum, viděli film o celé stavbě a o tom, jak funguje, a měli jsme štěstí – právě připlouvala nákladní loď. Mohli jsme tak sledovat plavební komory v provozu. Zavření vrat bylo působivé, ale pak už následovalo patnáct minut pomalého napouštění vody, což bylo přece jen o něco méně akční. Takže jsme asi po dvou minutách pokračovali dál.</p>
-
-    <p>Tušili jsme, že přijde bouřka, ale i tak nás docela zaskočila. Začali jsme hledat místo, kam bychom mohli zalézt pod střechu. Přijeli jsme ke dvěma samotám uprostřed polí a nejdřív stáli pod stromy. Když se ale opravdu rozpršelo, přelezli jsme zamčenou bránu i přes výstrahu „monitorováno kamerami“.</p>
-
-    <p>Seděli jsme pod pergolou jen pár minut, když Šikůvka najednou řekla: „Hele… tamhle sedí vlčák.“ Tak jsme se takticky vzdálili zpátky za bránu. A co myslíte? Nechal tam někdo rukavice? I když se pes zdál docela přátelský, rozhodl jsem se mu je tam nechat.</p>
-
-    <p>V Komárně jsme měli výborný kebab a nakoupili večeři i snídani. Protože rukavice zůstaly u pejska, zamířili jsme také do cykloobchodu. Nejenže jsem si koupil nové, krásně červené cyklistické rukavice, které jsou mnohem pohodlnější než ty původní, ale v servisu mi také seřídili zadní brzdu, která konečně přestala pískat. Jako bonus si nás vyfotili na svůj Facebook, protože si prý fotí všechny cyklisty ze zahraničí.</p>
-
-    <p>Po přeháňce jsme pokračovali dál. Většinu dne jsme jeli po dlouhé protipovodňové hrázi vybudované společně s vodním dílem Gabčíkovo. Čekaly nás další dlouhé kilometry téměř po rovině.</p>
-
-    <p>Cestou jsme narazili také na pozůstatky římského tábora z prvního století před naším letopočtem.</p>
-
-    <p>Na noc jsme zůstali schovaní za protipovodňovou hrází. Díky tomu, že se její okolí pravidelně udržuje, jsme našli parádní místo na spaní.</p>
-    <img class="day-photo" src="4.jpg" alt="Fotografie z 4. dne" loading="lazy" data-full="4.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-
-  </article>
-
-  <article class="entry" id="den5" data-day="5">
-    <span class="entry-number">Den 5</span>
-    <h3>Moča → Budapešť</h3>
-
-    <p>Kdo maže, ten jede. To platí skoro u všech sportů, ale přijde mi, že u dálkové cyklistiky to platí nejvíc. Nejde jen o řetěz. Stejnou péči potřebují i sedací partie. Ráno přichází vrstva vazelíny, během dne několik dalších podle potřeby a večer hygienické ubrousky se Sudocremem. Není to zrovna romantická stránka cyklistiky, ale bez ní by podobná cesta dlouho nevydržela.</p>
-
-    <p>Probouzím se stejně jako předchozí dny – celý ztuhlý a bolí mě snad všechno. Jakmile se to jednou změní, určitě to bude stát za zmínku.</p>
-
-    <p>Z místa na spaní jsme pokračovali po protipovodňové hrázi až do Štúrova. Tam na nás čekala příjemná zastávka v AlzaBoxu, kde jsem si vyzvedl novou powerbanku a malý přenosný reproduktor. Napadlo mě, jak moc by se podobná služba hodila během mé dřívější Stezky Českem. Tehdy mi musel táta posílat vybavení na poštu. Dnes stačí otevřít box a pokračovat dál.</p>
-
-    <p>Přes most jsme přejeli do Maďarska. Jestli jsem si na jihu Slovenska občas připadal ztracený kvůli maďarštině, tady už nerozumím opravdu vůbec ničemu.</p>
-
-    <p>Musím ale zároveň napravit jednu křivdu vůči Mapám.cz. Přišel jsem na to, že mají různé režimy pro cyklistiku, a já měl celou dobu nastavenou silniční cykloturistiku. Škoda, že jsem si toho všiml až v Maďarsku, kde Mapy.cz začínají připomínat Wikipedii. Trasy čerpají z OpenStreetMap a každý si tam může namalovat vlastní cestu čárou, kterou chce. Kdybych ještě někdy jel na kole po Česku, určitě se mi tahle znalost bude hodit.</p>
-
-    <p>Dnešní etapa nabídla také jeden z mála větších kopců v Maďarsku. Vyšlapali jsme přibližně čtyři sta výškových metrů a hned je zase sjeli dolů. Část cesty vedla po poměrně frekventovaných silnicích, ale všechno jsme zvládli bez problémů.</p>
-
-    <p>Do Budapešti jsme dorazili odpoledne. Překvapilo nás, jak dobře se po městě jezdí na kole. Cyklistických pruhů je tu spousta a průjezd centrem byl mnohem příjemnější, než jsme čekali. Cestou jsme obdivovali také impozantní budovu maďarského parlamentu.</p>
-    <img class="day-photo" src="5.jpg" alt="Fotografie z 5. dne" loading="lazy" data-full="5.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-
-  </article>
-
-  <article class="entry" id="den6" data-day="6">
-<span class="entry-number">Den 6</span>
-<h3>Budapešť → Kecskemét</h3>
-<p>Budapešť jsme opouštěli po cyklostezkách, které nás znovu mile překvapily. Průjezd městem byl plynulý a člověk měl skoro pocit, že je tady cyklista vítaným účastníkem provozu. Jakmile jsme ale nechali hlavní město za zády, přišla změna. Cyklostezky zmizely a zbytek dne se odehrával hlavně na silnici mezi auty. Nezbývalo než jet opatrně, hlídat provoz a snažit se nenechat se zlomit úmorným maďarským vedrem.</p>
-<p>Energie nebylo nazbyt, a tak jsme si hned ráno dopřáli zastávku na kávu. Byl to kebab stánek, který ale měl i kávu. Jo, a jmenoval se Istanbul, takže už jsme prakticky byli u cíle.</p>
-<p>V městečku Dabas nás čekal první velký milník celé expedice – 500 kilometrů od startu. Oslava byla skromná, přesně podle cyklistických pravidel. Něco dobrého k jídlu, ledový nápoj, chvilka odpočinku ve stínu a zase do sedla. Dabas se navíc ukázal jako nekonečně dlouhá obec. Když už jsme si mysleli, že jsme na jejím konci, objevila se další ulice a další domy.</p>
-<p>Nejnáročnější část dne přišla na třicetikilometrovém úseku směrem ke Kecskemétu. Rovná silnice, kam až oko dohlédlo. Žádné zatáčky, prostě jako když střelí, jen nekonečný asfalt mizící v horkém vzduchu. Člověk by řekl, že rovina je zadarmo, ale právě takové kilometry dokážou hlavu unavit možná víc než horské průsmyky.</p>
-<p>Naštěstí přišlo příjemné zpestření. Potkali jsme Simona z Kolína nad Rýnem, který měl v nohách už kolem 1 600 kilometrů. Stejně jako my mířil do Istanbulu, jenže pro něj je to pouze zastávka na dlouhé cestě do Číny, konkrétně do Hongkongu. Chvíli jsme si povídali, popřáli mu šťastnou cestu a rozjeli se každý svým tempem. Když jsem pak přemýšlel nad tím, že nemám ani společnou fotku, znovu jsme se na té mordorské silnici potkali. Nakonec jsme společně dorazili do Kecskemétu, kde jsme se zase rozloučili. Simon šel na večeři a my na nákup.</p>
-<p>První defekt celé výpravy potkal právě mě. A samozřejmě na zadním kole, asi tři kilometry od cíle dnešní etapy. To udělá radost. Když jsem vytáhl novou pumpičku, zjistil jsem, že to bude větší zábava, než jsem čekal. Existuje totiž více typů ventilků a já samozřejmě koupil pumpičku na jiný.</p>
-<p>Změna plánu ve změně plánu. Nikolka bere stan a pokračuje po cyklostezce hledat vhodné místo, kde ho postavit. Já kolo dotlačím na nejbližší benzínku, tam vyměním duši a nafouknu ji. A během té tříkilometrové cesty přijdu na to, jak se vlastně zadní kolo sundává.</p>
-<p>Při sledování YouTube tutoriálu za chůze se objevil maďarský cyklista Zoltán se svou rodinou. Stačilo mu podívat se na kolo a na mě a rozhodl se pomoct. Během chvilky sundal zadní kolo, našel dva trny zapíchnuté v plášti, vyměnil duši, nafoukal pneumatiku a nakonec opravil i tu původní, aby mi zůstala jako náhradní.</p>
-<p>Byl to jeden z těch okamžiků, které připomenou, jak neuvěřitelně vstřícní umí být úplně cizí lidé.</p>
-<p>Když jsem nandával zpátky brašnu, kterou jsem v lehčím amoku při píchnutí odhodil do škarpy, tentokrát dojel Simon nás. Původní myšlenka byla odložit ji na kraj silnice, aby bylo kolo lehčí a nepoškodil jsem si ráfek. Nakonec jsem ji ale našel dál, než jsem myslel, že jsem ji „odložil“.</p>
-<p>Protože všude kolem byl buď písek, pole, nebo soukromý pozemek, postavili jsme si stany na fotbalovém hřišti. Vedle probíhala typická vesnická zábava, ale nikdo z nás neměl náladu tam jít. Tak snad se trochu vyspíme.</p>
-<img class="day-photo" src="6.jpg" alt="Fotografie z 6. dne" loading="lazy" data-full="6.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-</article>
-
-  <article class="entry" id="den7" data-day="7">
-<span class="entry-number">Den 7</span>
-<h3>Kecskemét → severně od Segedínu</h3>
-<p>Večerní hudba, kterou jsme při usínání slyšeli z nedalekého hřiště, nakonec opravdu patřila svatbě. Pro jistotu jsme nasadili špunty do uší a doufali, že novomanželé nebudou slavit až do rána. Kolem druhé nebo půl třetí jsem se ale probudil a zjistil, že je všude úplné ticho. Špunty mohly ven a zbytek noci už proběhl v klidu.</p>
-<p>Ráno jsme se znovu rozloučili se Simonem. On se rozhodl pokračovat po cyklostezce, kterou Nikola den předtím prozkoumala. Ukázalo se ale, že velká část vede hlubokým pískem připomínajícím volejbalové hřiště. Tlačit naložená kola několik kilometrů se nám opravdu nechtělo, a tak jsme raději zvolili delší objížďku po asfaltu. Místo sedmi kilometrů nás čekalo zhruba čtrnáct, ale pořád to byla výrazně příjemnější varianta.</p>
-<p>První zastávku jsme udělali v restauraci u benzínky. Maďarsky a rukama nohama jsem se snažil vysvětlit, že chci dvě lunga a ne dvě capučína. Tak jsme vypili dvě capučína a pokračovali dál.</p>
-<p>O pár kilometrů dál jsme znovu narazili na Simona. Tentokrát už měl za sebou písčitou cyklostezku a jen se pousmál. Potvrdil nám, že jsme o nic nepřišli. Dali jsme si zmrzlinu, chvíli si popovídali a každý pokračoval zase svým tempem.</p>
-<p>Naštěstí většina dnešní trasy vedla po kvalitních cyklostezkách. To byla dobrá zpráva, protože přišla první opravdová vlna veder. Teploměr ukazoval kolem třiatřiceti stupňů, ale na rozpáleném asfaltu měl člověk pocit, že je minimálně o pár stupňů víc. Najednou přestalo být nejdůležitější, kolik kilometrů ujedeme. Mnohem důležitější bylo najít každé pítko, studnu nebo kohoutek s vodou.</p>
-<p>Cíle se tak změnily z města na město na cestu od pítka k pítku. Mají je tady poměrně často, jsou v dobrém stavu a ještě lépe zakreslené v Mapách.cz.</p>
-<p>Právě vedro nás donutilo přehodnotit i další plán cesty. Do Bělehradu zbývá něco pod dvě stě padesát kilometrů. Původně jsme je chtěli zvládnout za dva dny, ale to by znamenalo zbytečně se honit v největším horku. Nakonec jsme se rozhodli rozdělit cestu do tří etap. Budeme vstávat dřív, jezdit hlavně ráno a večer a polední žár raději přečkáme někde ve stínu.</p>
-<p>Večer jsme našli místo na spaní v lese severně od Segedínu. Řekněme, že šlo spíš o cigánské ghetto s lesem uprostřed než o nejmalebnější místo celé výpravy. Po dnešním vedru jsme ale byli rádi za jakýkoliv kus stínu a klidu. Navíc jsme za cedulí „Pozor, včely“, takže snad budeme mít klid jak od lidí, tak od hmyzu.</p>
-<p>Zítra nás čeká Segedín. A s ním ještě jedna maďarská povinnost, kterou si nechceme nechat ujít – pořádný langoš. Pak už zamíříme k srbské hranici a zase o něco blíž Istanbulu.</p>
-<img class="day-photo" src="7.jpg" alt="Fotografie ze 7. dne" loading="lazy" data-full="7.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-</article>
-<article class="entry" id="den8" data-day="8">
-<span class="entry-number">Den 8</span>
-<h3>Severně od Segedínu → řeka Tisa, Srbsko</h3>
-<p>První tropickou noc jsme nakonec zvládli lépe, než jsme čekali. Usínání sice chvíli trvalo, ale pak už jsme spali překvapivě dobře. Kolem stanu se celou noc ozývali srnci pobíhající lesem a jejich šustění občas připomnělo, že jsme zase o kus dál od domova. Budík zazvonil už v šest ráno. Nový režim byl jasný – vyjíždět co nejdřív, využít ranní chlad a polední vedra raději přečkat někde ve stínu.</p>
-<p>Do Segedínu to bylo jen pár kilometrů. Město nás přivítalo pohodovou atmosférou, ranní kávou a samozřejmě zastávkou na záchodě – jednou z těch drobností, které na podobné cestě člověk začne považovat za malý luxus. Po přejezdu přes Tisu jsme nakoupili zásoby na oběd, ale jedna maďarská povinnost ještě zbývala. Langoš.</p>
-<p>Nemohli jsme odjet, aniž bych si dal pořádný maďarský langoš. A stálo to za to. Byl přesně takový, jaký má být – čerstvý, mastný a naprosto výborný. Tak jsem ho zprasil před stánkem a jeli jsme dál. S kávou, jídlem a splněným gastronomickým úkolem jsme vyrazili směrem k Srbsku.</p>
-<p>Hranice nás překvapily svou pohodou. Maďarská kontrola zabrala víc času než ta srbská. Srbský policista během odbavení stihl ještě vyřídit několik dalších lidí, a když zjistil, že jedeme na kole až do Istanbulu, jen nevěřícně zakroutil hlavou.</p>
-<p>V tu chvíli se zdálo, že všechno běží přesně podle plánu.</p>
-<p>Jenže podobné okamžiky mají na dlouhých cestách zvláštní vlastnost – většinou dlouho nevydrží.</p>
-<p>Jen pár kilometrů za hranicí, poblíž srbského Krsturu, jsem začal mít pocit, že zadní kolo nejede úplně správně. Nejprve jsem si myslel, že je jen prázdná pneumatika. Abych nezničil ráfek, přesunul jsem váhu dopředu a co nejvíc jel ve stoje. V nejbližším městě, Novém Kneževci, jsme našli autoservis. Mechanik mi ochotně pneumatiku dofoukal, ale nepříjemné drncání nezmizelo.</p>
-<p>Teprve když jsem kolo pořádně prohlédl, bylo jasno. Zadní ráfek dostal pořádnou osmičku.</p>
-<p>Jelikož jsou moje zkušenosti s centrováním kol přinejmenším diskutabilní, provedl jsem rychlou technickou analýzu: „Ještě se to točí, tak to těch dvě stě kiláků do Bělehradu dá.“</p>
-<p>Další cesta vedla přes Čoku a Sentu. Vyřídili jsme srbskou SIM kartu, doplnili zásoby, dali si zmrzlinu – nebo jak říkají místní, „sladoled“ – a pokračovali dál. Kopeček stál dvacku.</p>
-<p>Odpoledne přišla zatím asi psychicky nejnáročnější část celé výpravy. Šestnáct kilometrů rozdělených do dvou dokonale rovných úseků. Bez zatáček, bez stínu, jen asfalt, slunce a horký vzduch vlnící se nad silnicí. Člověk měl pocit, že se krajina vůbec nehýbe a cíl zůstává pořád stejně daleko.</p>
-<p>Úlevu přineslo až městečko Mol. Ve stínu jsme si sedli na chvíli odpočinout na trávník, když přijel majitel a dal se s námi do řeči. Nabídl nám limonádu, za chvíli přišel znovu a doplnil nám i láhev s vodou. Trochu jsem měl pocit, že to ještě není všechno, tak jsme seděli dál.</p>
-<p>Pán se jmenoval Ištván a mluvil výborně anglicky. Pozval nás na posezení a na cestu nám dal pytlík buráků – nebo jak jim tady říkají, „kikiriki“. Nikolka měla okamžitě o něco lepší den.</p>
-<p>Posledních několik kilometrů jsme dojeli po hrázi podél Tisy, kde jsme našli další místo na přespání. Už jsme stavěli stan, když se ozval Simon. Byl jen kousek za námi, a tak večer dorazil do našeho improvizovaného kempu.</p>
-<img class="day-photo" src="8.jpg" alt="Fotografie z 8. dne" loading="lazy" data-full="8.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-</article>
-  <article class="entry" id="den9" data-day="9">
-<span class="entry-number">Den 9</span>
-<h3>Od Molu směrem k Zrenjaninu: o jídle, lidech a nekonečných rovinách</h3>
-
-<p>„A jak vlastně na takové cestě jíte?“</p>
-
-<p>To je otázka, která se objevuje překvapivě často. Jeden z vás, kdo má link, se na to ptal, takže dnešní kapitola bude trochu jiná. Méně o kilometrech a víc o tom, co nás vlastně pohání.</p>
-
-<p>Romantické představy o vaření u stanu realita moc nepřipomíná. Většinu času nakupujeme v supermarketech a skládáme si jídlo z toho, co je zrovna po ruce. Základem bývá pečivo, hummus a sýry. Nikola maso nejí, ale naštěstí jsem ji za ty roky úspěšně "převychoval" na sýry, takže ty tvoří podstatnou část našeho jídelníčku. K tomu téměř vždycky přihodíme okurku. Je to možná nenápadná zelenina, ale na cesty ideální – na rozdíl od rajčat přežije celý den v brašně bez úhony.</p>
-
-<p>Čím víc se posouváme na jih, tím příjemnější je ještě jedna věc. Ceny. Ovoce, zelenina i běžné potraviny jsou znatelně levnější než doma, takže si můžeme dopřát o něco víc čerstvých věcí. A dnes jsme si například natrhali mirabelky.</p>
-
-<p>Snídaně máme rozdělené podle vkusu. Nikolka si většinou připraví ovesnou kaši s banánem, zatímco já sáhnu po nějakém sladkém pečivu. Poslední dny jsem si navíc oblíbil čokoládové mléko. Nejen že chutná, ale dodá i spoustu energie a bílkovin, což se po několika hodinách v sedle opravdu hodí.</p>
-
-<p>Obědy bývají spíš lehké – nějaká tyčinka nebo drobnost, aby se po jídle dobře šlapalo. Zato večer si dopřejeme pořádnou bagetu nebo několik rohlíků se sýrem, hummusem a zeleninou. Minule jsme koupili mini mozzarellky s mini rajčátkama a smíchali je v ešusu. Jo a i tak nakupuju pořád ve slevách dneska jsem ulovil pepsi za 12 korun!</p>
-
-<p>Nesmím zapomenout že zmrzlina a Coca-Cola je něco co pijeme pravidelně, hlavně kvůli cukrům, které rychle doplní energii.</p>
-
-<p>První dny jsme si občas zašli na polední menu do restaurace. Bylo to příjemné, ale peněženka rychle naznačila, že takhle by cesta dlouho nevydržela. Stanování a nákupy v supermarketech jsou jednoduše rozumnější varianta.</p>
-
-<p>A když už je řeč o penězích… protože jsem žid po tátovi (zdravím tatínka) tak počítám každou kačku a vedu si záznam kolik co stálo. Takže vím, kolik stála výbava, kolik nás stojí samotné cestování i za co utrácíme nejvíc.</p>
-
-<p>Zpátky k cestě</p>
-
-<p>Dnes jsme celý den putovali se Simonem. První zastávkou bylo městečko Novi Bečej. Dali jsme si kávu a znovu nás zaujala architektura, ve které je pořád cítit odkaz Rakouska-Uherska. A bacha přišli na řadu Pekary takže byl Burek!</p>
-
-<p>Já měl navíc ještě jeden úkol. Po fiasku s pumpičkou z minulých dnů jsem konečně koupil správnou. Tentokrát jsem raději vytáhl náhradní duši přímo v cykloobchodě a prodavači názorně ukázal, jaký ventilek opravdu potřebuju. Když jsem mu vyprávěl, jak jsem si před pár dny koupil úplně špatnou pumpičku, jen se zasmál. Se Srby je domluva přece jen o něco jednodušší než s Maďary.</p>
-
-<p>Za městem nás Simon navedl na cyklostezku.</p>
-
-<p>Tedy… „cyklostezku“.</p>
-
-<p>Ve skutečnosti to byla dlouhá prašná polní cesta mezi lány polí. Připomínala spíš záběry z amerického Dust Bowlu než evropskou cyklotrasu. Nad hlavou nemilosrdné slunce, kolem nekonečná rovina a široko daleko ani jediný strom.</p>
-
-<p>Naštěstí jsou v Srbsku skoro v každé vesnici veřejná pítka. Vodu do lahví si sice raději kupujeme balenou, ale studená voda z pítka je k nezaplacení. Opláchnout obličej, namočit vlasy, promočit tričko – v takovém vedru je to často lepší než jakýkoliv energetický gel.</p>
-
-<p>Do Zrenjaninu jsme dorazili kolem třetí hodiny odpoledne. Nakoupili jsme jídlo a pak udělali přesně to, co nám poslední dny funguje nejlépe. Našli jsme park, lehli si do stínu a dvě hodiny prostě nic nedělali. V tomhle počasí je odpočinek stejně důležitý jako samotné šlapání.</p>
-
-<p>Když největší vedro polevilo, vyrazili jsme znovu.</p>
-
-<p>Jenže ani dnešek se neobešel bez technických komplikací.</p>
-
-<p>Na kole jsem objevil chybějící matku na nosiči. Naštěstí jsme byli zrovna v další vesnici, kde jsme narazili na dědušku Juraje. Společných slov bylo málo, ale stačilo pár gest. Ukázal jsem šroub, naznačil, že chybí matka, a za chvíli byl zpátky nejen s ní, ale i s klíčem a imbusem. Během několika minut bylo opraveno.</p>
-
-<p>Mezitím dorazila jeho dcera Livia, která je provdaná za Němce a mluvila anglicky. Vyprávěli jsme jí o naší cestě do Istanbulu a na rozloučenou jsme dostali vodu a tašku plnou hrušek.</p>
-
-<p>Právě kvůli podobným setkáním člověk zjišťuje, že nejhezčí vzpomínky z dlouhé cesty často nevznikají u známých památek, ale na dvorku úplně obyčejného člověka, který se rozhodne pomoci cizincům.</p>
-
-<p>Posledních pár kilometrů jsme dojeli už za podvečerního světla. Našli jsme jedno z nejkouzelnějších míst na spaní celé výpravy. Fotky ani video nedokážou úplně vystihnout, jak fajn to místo je, ale snad se jim to podaří alespoň trochu.</p>
-
-<p>Teď už jen zbývá doufat, že nás odtud do rána nikdo nevyžene. A pokud ano, bude to zase jen další příběh do další kapitoly našeho putování.</p>
-
-<img class="day-photo" src="9.jpg" alt="Fotografie z 9. dne" loading="lazy" data-full="9.jpg" onerror="this.style.display='none';this.removeAttribute('src');">
-</article>
+        {% for photo in trip_day.photos %}
+          <img
+            class="day-photo"
+            src="{{ photo | relative_url }}"
+            alt="Fotografie z {{ trip_day.day }}. dne"
+            loading="lazy"
+            data-full="{{ photo | relative_url }}"
+            onerror="this.style.display='none';this.removeAttribute('src');"
+          >
+        {% endfor %}
+      </div>
+    </details>
+  {% endfor %}
 
 <footer>© 2026 Cesta do Istanbulu</footer>
 </main>
@@ -534,6 +572,16 @@
       overlay.addEventListener('click', closeMenu);
 
       menu.addEventListener('click', (event) => {
+        const dayLink = event.target.closest('a[data-target]');
+
+        if (dayLink) {
+          const entry = document.getElementById(
+            dayLink.dataset.target
+          );
+
+          if (entry) entry.open = true;
+        }
+
         if (event.target.closest('a')) closeMenu();
       });
 
@@ -602,6 +650,32 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
+      const openEntryFromHash = () => {
+        const targetId = window.location.hash.slice(1);
+
+        if (!targetId) return;
+
+        const entry = document.getElementById(targetId);
+
+        if (entry && entry.matches('.entry[data-day]')) {
+          entry.open = true;
+
+          requestAnimationFrame(() => {
+            entry.scrollIntoView({ block: 'start' });
+          });
+        }
+      };
+
+      entries.forEach((entry) => {
+        entry.addEventListener('toggle', setCurrentDay);
+      });
+
+      window.addEventListener(
+        'hashchange',
+        openEntryFromHash
+      );
+
+      openEntryFromHash();
       setCurrentDay();
       updateTopButton();
     })();
