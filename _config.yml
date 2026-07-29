@@ -1,0 +1,18 @@
+title: Cesta do Istanbulu
+description: Denní zápisky z cyklistické cesty do Istanbulu.
+lang: cs
+
+collections:
+  days:
+    output: false
+
+markdown: kramdown
+baseurl: /Istanbul_projekt
+
+exclude:
+  - README.md
+  - CHATGPT-PROMPT.md
+  - Gemfile
+  - Gemfile.lock
+  - todo.md
+  - vendor

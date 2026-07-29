@@ -1,0 +1,102 @@
+media:
+  input: media
+  output: /media
+  rename: safe
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: days
+    label: Denní zápisky
+    type: collection
+    path: _days
+    format: yaml-frontmatter
+
+    filename:
+      template: "den-{fields.day}.md"
+      field: false
+
+    view:
+      fields: [day, date, title, from, to, published]
+      primary: title
+      sort: [day, date, title]
+      search: [title, from, to]
+      default:
+        sort: day
+        order: desc
+
+    operations:
+      create: true
+      rename: false
+      delete: true
+
+    fields:
+      - name: day
+        label: Číslo dne
+        type: number
+        required: true
+        options:
+          min: 1
+
+      - name: date
+        label: Datum
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+
+      - name: title
+        label: Nadpis dne
+        type: string
+        required: true
+        description: "Krátký poutavý nadpis bez trasy, například Bouřka, vlčák a rukavice v zajetí"
+
+      - name: from
+        label: Odkud
+        type: string
+        required: true
+        description: "Jen výchozí místo včetně vlajky země, například 🇷🇸 Mol"
+
+      - name: to
+        label: Kam
+        type: string
+        required: true
+        description: "Jen cílové místo včetně vlajky země, například 🇷🇸 Zrenjanin"
+
+      - name: photos
+        label: Fotografie
+        type: image
+        description: "Fotografie se po uložení automaticky zmenší a převedou do WebP."
+        options:
+          multiple:
+            max: 12
+          unique: true
+          extensions: [jpg, jpeg, png, webp]
+          rename: safe
+
+      - name: published
+        label: Publikovat
+        type: boolean
+        default: true
+
+      - name: body
+        label: Text zápisku
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true
+          media: false
+
+settings:
+  hide: true
+
+  content:
+    merge: true
+
+  commit:
+    identity: user
+    templates:
+      create: "Přidat {filename}"
+      update: "Upravit {filename}"
+      delete: "Smazat {filename}"
+      rename: "Přejmenovat {oldFilename} na {newFilename}"

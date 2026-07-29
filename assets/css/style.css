@@ -1,0 +1,395 @@
+:root {
+  --paper: #f3efe7;
+  --surface: #faf7f0;
+  --ink: #26231f;
+  --muted: #746d63;
+  --rule: #c8c0b3;
+  --accent: #a74632;
+  --green: #5f684f;
+  --yellow: #d7bd66;
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+button, summary { -webkit-tap-highlight-color: transparent; }
+
+.shell {
+  width: min(100% - 24px, 780px);
+  margin-inline: auto;
+}
+
+.masthead { padding-top: 0; }
+.hero-copy { padding: 28px 0 24px; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(3.25rem, 17vw, 6.8rem);
+  font-weight: 400;
+  letter-spacing: -.065em;
+  line-height: .84;
+}
+
+h1 em {
+  display: block;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.hero-intro {
+  max-width: 35em;
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Animated route illustration. All artwork styles are scoped for easy swapping. */
+.hero-art--route {
+  display: block;
+  margin-top: 1.25rem;
+  overflow: hidden;
+}
+
+.hero-art--route svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-art--route .route-line {
+  fill: none;
+  stroke: #cf4e38;
+  stroke-width: 4.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-art--route .wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wheelSpin 0.8s linear infinite;
+}
+
+.hero-art--route .wheel circle {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.9;
+}
+
+.hero-art--route .wheel path,
+.hero-art--route .bike,
+.hero-art--route .limb {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-art--route .wheel path {
+  stroke-width: 1.05;
+}
+
+.hero-art--route .bike,
+.hero-art--route .limb {
+  stroke-width: 1.9;
+}
+
+.hero-art--route .cyclists {
+  animation: bikeBounce 0.45s ease-in-out infinite alternate;
+}
+
+.hero-art--route .bag {
+  fill: #7f8e62;
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.hero-art--route .body {
+  stroke: var(--ink);
+  stroke-width: 1.8;
+}
+
+.hero-art--route .nikca-shirt {
+  fill: #5d7698;
+}
+
+.hero-art--route .honza-shirt {
+  fill: #7b8c52;
+}
+
+.hero-art--route .skin {
+  fill: #e7b694;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+.hero-art--route .hair {
+  fill: #5b3d2f;
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+.hero-art--route .helmet {
+  fill: #3e4348;
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+
+@keyframes bikeBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(1.8px); }
+}
+
+@keyframes wheelSpin {
+  to { transform: rotate(360deg); }
+}
+/* Primary journey links */
+.journey-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 12px 0 34px;
+  font-family: var(--sans);
+}
+
+.journey-action {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 10px 14px;
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  text-decoration: none;
+}
+
+.journey-action--map { background: var(--green); color: #fff; }
+
+.action-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.action-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.action-copy { line-height: 1.15; }
+.action-copy strong { display: block; font-size: .9rem; }
+.action-copy small { display: block; margin-top: 5px; opacity: .72; font-size: .68rem; }
+.action-arrow { font-size: 1.25rem; }
+
+.journey-action:hover,
+.journey-action:focus-visible {
+  outline: 3px solid rgba(167, 70, 50, .25);
+  outline-offset: 2px;
+}
+
+/* Diary index and expandable entries */
+.journal-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.journal-head p {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: .66rem;
+  font-weight: 850;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.journal-head h2 {
+  margin: 0;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: 1;
+}
+
+.entry-count {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 750;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.entries { padding: 8px 0 44px; }
+.entry { border-bottom: 1px solid var(--rule); scroll-margin-top: 10px; }
+
+.entry summary {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 30px;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.entry summary::-webkit-details-marker { display: none; }
+
+.entry-day {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: -.06em;
+  line-height: 1;
+}
+
+.entry-heading { min-width: 0; }
+
+.entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 9px;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.entry-title {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+
+.entry-route {
+  display: block;
+  margin-top: 5px;
+  overflow: hidden;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 650;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.route-arrow { padding-inline: .2em; color: var(--accent); }
+
+.entry-toggle {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.entry[open] .entry-toggle {
+  transform: rotate(45deg);
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.entry[open] summary { border-bottom: 1px solid var(--rule); }
+.entry-body { padding: 24px 0 34px 58px; }
+.entry-content { max-width: 630px; font-size: 1.04rem; }
+.entry-content p { margin: 0 0 1.25em; }
+.entry-content p:last-child { margin-bottom: 0; }
+
+figure { margin: 30px 0 0; }
+
+.day-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: cover;
+  background: #e3ded4;
+}
+
+figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 26px 0 42px;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+footer a { text-underline-offset: 4px; }
+
+@media (min-width: 600px) {
+  .shell { width: min(100% - 40px, 780px); }
+  .hero-copy { padding-block: 46px 30px; }
+  h1 em { margin-left: .38em; }
+  .journey-actions { grid-template-columns: 1fr 1fr; margin-top: 14px; }
+  .entry summary { grid-template-columns: 64px minmax(0, 1fr) 34px; gap: 18px; padding-block: 22px; }
+  .entry-day { font-size: 2rem; }
+  .entry-title { font-size: 1.35rem; }
+  .entry-route { white-space: normal; }
+  .entry-body { padding: 30px 0 44px 82px; }
+  .entry-content { font-size: 1.12rem; }
+  footer { flex-direction: row; justify-content: space-between; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .hero-art--route .cyclists,
+  .hero-art--route .wheel {
+    animation: none !important;
+  }
+
+  .entry-toggle { transition: none; }
+}
