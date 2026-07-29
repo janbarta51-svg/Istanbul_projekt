@@ -21,11 +21,17 @@ země (například `🇷🇸 Mol` → `🇷🇸 Zrenjanin`).
 ## Struktura
 
 - `_days/den-N.md` – jednotlivé zápisky;
-- `media/` – fotografie;
-- `index.html` – vzhled a Jekyll šablona;
+- `media/` – fotografie a loga externích služeb;
+- `index.html` – struktura stránky a vykreslení zápisků;
+- `_includes/journey-hero.html` – SVG ilustrace v záhlaví;
+- `assets/css/style.css` – kompletní vzhled a responzivní pravidla;
+- `assets/js/main.js` – otevření zápisku odkazovaného v URL;
 - `.pages.yml` – konfigurace Pages CMS;
 - `_config.yml` – konfigurace Jekyllu;
 - `CHATGPT-PROMPT.md` – pokyn pro hlasové zápisky.
 
-Jednotlivé dny jsou ve výchozím stavu sbalené. Kliknutím na hlavičku
-se zápisek rozbalí.
+Web je navržený jako průběžný polní deník. Jednotlivé zápisky jsou
+řazené chronologicky a ve výchozím stavu sbalené, aby zůstal přehledný
+i na mobilu. Klepnutím na den se zápisek kdykoli rozbalí. Animace v
+záhlaví je součástí HTML a CSS, takže nevyžaduje těžký GIF ani externí
+knihovnu. Při zapnutém omezení pohybu v systému se automaticky zastaví.
