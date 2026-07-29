@@ -293,7 +293,7 @@ layout: null
     <span class="entry-number">Den {{ trip_day.day }}</span>
     <h3>{{ trip_day.title | escape }}</h3>
 
-    {% if trip_day.date %}
+    {% if trip_day.date and trip_day.date != empty %}
       <p class="entry-date">{{ trip_day.date | date: "%-d. %-m. %Y" }}</p>
     {% endif %}
 

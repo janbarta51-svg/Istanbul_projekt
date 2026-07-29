@@ -11,7 +11,7 @@ content:
     path: _days
     format: yaml-frontmatter
     filename:
-      template: "den-{day}.md"
+      template: "den-{fields.day}.md"
       field: false
     view:
       fields: [day, title, date, published]
