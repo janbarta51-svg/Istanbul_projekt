@@ -7,7 +7,7 @@ collections:
     output: false
 
 markdown: kramdown
-baseurl: /Istanbul_projekt
+baseurl: ""
 
 exclude:
   - README.md
