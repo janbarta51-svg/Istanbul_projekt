@@ -1,0 +1,80 @@
+media:
+  input: media
+  output: /media
+  rename: safe
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: days
+    label: Denní zápisky
+    type: collection
+    path: _days
+    format: yaml-frontmatter
+    filename:
+      template: "den-{day}.md"
+      field: false
+    view:
+      fields: [day, title, date, published]
+      primary: title
+      sort: [day, date, title]
+      default:
+        sort: day
+        order: desc
+    operations:
+      create: true
+      rename: false
+      delete: true
+    fields:
+      - name: day
+        label: Číslo dne
+        type: number
+        required: true
+
+      - name: date
+        label: Datum
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+
+      - name: title
+        label: Trasa nebo nadpis
+        type: string
+        required: true
+        description: "Například Budapešť → Dunaföldvár"
+
+      - name: photos
+        label: Fotografie
+        type: image
+        options:
+          multiple:
+            max: 12
+          unique: true
+          extensions: [jpg, jpeg, png, webp]
+          rename: safe
+
+      - name: published
+        label: Publikovat
+        type: boolean
+        default: true
+
+      - name: body
+        label: Text zápisku
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true
+          media: false
+
+settings:
+  hide: true
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "Přidat {filename}"
+      update: "Upravit {filename}"
+      delete: "Smazat {filename}"
+      rename: "Přejmenovat {oldFilename} na {newFilename}"
