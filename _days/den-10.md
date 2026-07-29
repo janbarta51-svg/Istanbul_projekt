@@ -6,8 +6,6 @@ from: "🇷🇸 Bela Blata "
 to: 🇷🇸 Beograd
 published: true
 ---
-
-
 Ráno nás kousek od Lukina Sela neprobudil budík, ale králíci. Pobíhali kolem stanu, vesele poskakovali v trávě a dávali nám poměrně jasně najevo, že noc skončila. Po snídani jsme sbalili tábor a vyrazili přibližně deset kilometrů do Perlezu.
 
 Právě tam se od nás znovu odpojil Simon. Rozhodl se pokračovat po silnici číslo 13 přímo směrem na Bělehrad. My jsme si vybrali jinou variantu. Místo provozu a aut jsme zamířili na cyklotrasu vedoucí po hrázi podél Dunaje. Podle mapy to měla být spíš polní cesta, ale vidina klidnější jízdy bez aut nám připadala lákavější.
