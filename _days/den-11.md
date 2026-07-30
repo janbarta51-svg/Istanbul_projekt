@@ -5,7 +5,7 @@ title: Zero day
 from: " Bělehrad "
 to: "🇷🇸 "
 photos:
-  - /media/1000031647.jpg
+  - /media/1000031647.webp
 published: true
 ---
 Po několika dnech v sedle přišel čas na něco, co zní téměř podezřele.
