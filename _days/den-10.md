@@ -42,7 +42,5 @@ Ještě před příjezdem na ubytování jsme kola umyli v automyčce, abychom s
 
 Po sprše jsme se konečně trochu zkulturnili, zapnuli pračku a vyrazili na čevapy. Byly výborné. Já jsem odcházel o něco kulatější než při příchodu. Nikolka tvrdila, že také, ale žádné viditelné důkazy pro to neexistují. (Námitka! Nikolka nejí maso takže měla bramborovou kaši, grilování zeleninu a spláchla to pivem. Jo a sežrala mi půlku salátu co jsem měl k čevapům)
 
-Dnešní den navíc přinesl ještě jeden důležitý milník, který nemá nic společného s počtem kilometrů. Mirko mi pomohl přesunout náš cestovní web na normální adresu. Odteď tedy naše cesta pokračuje na honzanace
-
-stach.cz. Děkuji.
+Dnešní den navíc přinesl ještě jeden důležitý milník, který nemá nic společného s počtem kilometrů. Mirko mi pomohl přesunout náš cestovní web na normální adresu. Odteď tedy naše cesta pokračuje na honzanacestach.cz. Děkuji.
 
