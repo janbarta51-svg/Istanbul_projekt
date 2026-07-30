@@ -6,7 +6,7 @@ from: "🇷🇸 Bela Blata "
 to: 🇷🇸 Beograd
 published: true
 photos:
-  - /media/87c13ad0-df23-487f-944f-341b5f640578-1all42369.jpg
+  - /media/87c13ad0-df23-487f-944f-341b5f640578-1all42369.webp
 ---
 Ráno nás kousek od Lukina Sela neprobudil budík, ale králíci. Pobíhali kolem stanu, vesele poskakovali v trávě a dávali nám poměrně jasně najevo, že noc skončila. Po snídani jsme sbalili tábor a vyrazili přibližně deset kilometrů do Perlezu.
 
