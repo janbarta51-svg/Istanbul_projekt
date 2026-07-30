@@ -3,7 +3,7 @@ day: 8
 date: 2026-07-27
 title: Křivý ráfek, nekonečné roviny a srbská pohostinnost
 from: 🇭🇺 Severně od Segedínu
-to: Mol
+to: 🇷🇸 Mol
 photos:
   - /media/den-8.webp
 published: true
