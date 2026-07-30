@@ -2,8 +2,8 @@
 day: 11
 date: 2026-07-30
 title: Zero day
-from: " Bělehrad "
-to: "🇷🇸 "
+from: " 🇷🇸 Bělehrad "
+to: "Cykloservis a zase zpátky "
 photos:
   - /media/1000031647.webp
 published: true
