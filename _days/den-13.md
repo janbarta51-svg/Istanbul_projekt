@@ -5,9 +5,9 @@ title: 100 kilometrů, tankodrom a hledání místa na spaní
 from: "🇷🇸 Oreovice "
 to: 🇷🇸 Novi Bračin
 published: true
+photos:
+  - /media/1000031900.jpg
 ---
-
-
 Dnešek byl zatím časově nejdelší den celé cesty. Vyjeli jsme ještě před sedmou ráno z Oreovice a dojeli jsme až půl deváté večer. Ale pěkně postupně.
 
 
