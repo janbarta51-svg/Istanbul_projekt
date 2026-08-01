@@ -6,7 +6,7 @@ from: "🇷🇸 Oreovice "
 to: 🇷🇸 Novi Bračin
 published: true
 photos:
-  - /media/1000031900.jpg
+  - /media/1000031900.webp
 ---
 Dnešek byl zatím časově nejdelší den celé cesty. Vyjeli jsme ještě před sedmou ráno z Oreovice a dojeli jsme až půl deváté večer. Ale pěkně postupně.
 
