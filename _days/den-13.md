@@ -96,6 +96,4 @@ Nakonec jsme se přesunuli na okraj posekané louky a stan postavili v jednom z 
 
 
 
-Teď zbývá jen doufat, že nás v noci nenajdou místní psi a 
-
-že ráno budeme pokračovat dál směrem na Niš.
+Teď zbývá jen doufat, že nás v noci nenajdou místní psi aže ráno budeme pokračovat dál směrem na Niš.
