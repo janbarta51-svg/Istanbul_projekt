@@ -16,7 +16,7 @@ Ráno jsme vyráželi bez snídaně. Chtěli jsme co nejvíc využít chladněj�
 
 
 
-Nikola si tam během několika minut vybudovala vlastní psí smečku. Místní psi se kolem ní začali shromažďovat ve chvíli, kdy pochopili, že jí makovec a že by z něj možná mohlo něco upadnout. Věrně ji následovali až do okamžiku, kdy z pekárny vyšel další člověk a nabídl jim něco lepšího. Hierarchie smečky se změnila během několika vteřin.
+Nikolka si tam během několika minut vybudovala vlastní psí smečku. Místní psi se kolem ní začali shromažďovat ve chvíli, kdy pochopili, že jí makovec a že by z něj možná mohlo něco upadnout. Věrně ji následovali až do okamžiku, kdy z pekárny vyšel další člověk a nabídl jim něco lepšího. Hierarchie smečky se změnila během několika vteřin.
 
 
 
