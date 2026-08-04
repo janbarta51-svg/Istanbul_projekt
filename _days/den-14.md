@@ -1,7 +1,7 @@
 ---
 day: 14
 date: 2026-08-02
-title: Psí snídaně, výborný oběd a konečně vyhledy
+title: "Psí snídaně, výborný oběd a konečně výhledy "
 from: "🇷🇸 Novi Bračin "
 to: 🇷🇸 Světa Petka
 published: true
@@ -82,4 +82,4 @@ Na noc jsme našli místo za kostelem. Stan jsme schovali tak, abychom příliš
 
 
 
- 
+&nbsp;
