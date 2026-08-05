@@ -5,7 +5,7 @@ title: "Rekordní den, opravy a krásné výhledy "
 from: 🇧🇬 Rovno Pole
 to: 🇧🇬 Krasnovo
 photos:
-  - /media/1000032169.jpg
+  - /media/1000032169.webp
 published: true
 ---
 Jet lag jsme úspěšně zvládli (je tady +1 hodina!), a tak jsme u termálních pramenů poblíž Ravnopole znovu vstávali v šest ráno. Čekala nás dlouhá etapa, takže jsme chtěli co největší část trasy zvládnout dřív, než se silnice rozpálí na provozní teplotu bulharské pece.
