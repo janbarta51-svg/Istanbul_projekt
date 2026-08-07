@@ -5,7 +5,7 @@ title: Plovdiv, bulharské „ano-ne“ a večerní vyhlídková jízda přes Č
 from: "🇧🇬 Krasnovo "
 to: 🇧🇬 Crna Gora
 photos:
-  - /media/1000032289.jpg
+  - /media/1000032289.webp
 published: true
 ---
 Ráno jsme vyráželi znovu lehce před půl sedmou. Stan byl mokrý, protože přesně na místě, kde jsme spali, v noci pršelo. Jediné místo v celém Bulharsku, kde pršelo.
