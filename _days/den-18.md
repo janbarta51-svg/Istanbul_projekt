@@ -28,7 +28,7 @@ Do Plovdivu jsme dorazili poměrně rychle. Na okraji města jsme narazili na no
 
 
 
-I přes výrazně dražší kávu než v Albánii (v Srbském Pirotu jsme se vlezli do 75 korun s dostali jsme k tomu domácí citrónovou limonádu) Nikolka ale tvrdila, že byla výborná, takže tentokrát cenu omlouváme.
+I přes výrazně dražší kávu než v Srbsku (v  Pirotu jsme se vlezli do 75 korun s dostali jsme k tomu domácí citrónovou limonádu) Nikolka ale tvrdila, že byla výborná, takže tentokrát cenu omlouváme.
 
 
 
