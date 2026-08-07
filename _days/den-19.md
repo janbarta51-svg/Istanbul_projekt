@@ -5,7 +5,7 @@ title: Horká voda, první defekt Nikolky a 1 500 kilometrů za námi
 from: "🇧🇬 Crna Gora "
 to: 🇧🇬 Biser
 photos:
-  - /media/1000032341.jpg
+  - /media/1000032341.webp
 published: true
 ---
 Dnes mě napadla geniální věc.
