@@ -6,7 +6,7 @@ title: " Přes Řecko do Turecka: poslední země, první kebab a první setkáv
 from: 🇧🇬 Bisker
 to: 🇹🇷 Süloglu
 photos:
-  - /media/1000032370.jpg
+  - /media/1000032370.webp
 published: true
 ---
 Ráno jsme vstávali ještě před východem slunce.
