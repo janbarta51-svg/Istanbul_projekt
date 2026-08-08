@@ -89,8 +89,6 @@ Takže díky, Mirko. Deník může pokračovat.
 
 
 
-&nbsp;
-
 Já jsem si dal první skutečný turecký kebab. Byl dobrý a splnil přesně to, co jsme od něj po dopoledni v sedle potřebovali.
 
 
@@ -113,122 +111,56 @@ Kupodivu ale prý chutnala dobře, takže můžeme první turecké gastronomick�
 
 Seděli jsme v parku nedaleko jedné z výrazných edirnských mešit, když k nám přišel místní muž. Viděl dva unavené cyklisty ve stínu, přinesl nám limonádu, chvíli si s námi povídal a oznámil nám, že prý se koukáme na největší mešitu v Turecku. Také nám nabídl, že můžeme u něj přespat v Istanbulu, že prý je taky vášnivý cyklista a dělá pro Shimano takže možná od něho seženeme ty zničený kazety.
 
-
-
-První hodiny v Turecku a už druhý člověk, který nám jen tak pomohl.
-
-
-
-&nbsp;
-
 Za Edirne se před námi objevila silnice, která jako by byla nakreslená pravítkem přes zvlněnou krajinu.
 
-
-
 Nahoru.
-
-
 
 Dolů.
 
-
-
 Nahoru.
 
-
-
 Dolů.
-
-
 
 A k tomu protivítr tak silný, že člověk měl pocit, že i z kopce musí šlapat.
 
-
-
 Zastavovali jsme skoro v každé vesnici. Místní na nás troubili, mávali, zdravili nás a občas přišli podat ruku.
-
-
 
 Jazykově jsme byli úplně ztracení.
 
-
-
 Moje turečtina momentálně obsahuje přibližně slovo „selam“. Nikola kontruje slovem „Vysočina“.
-
-
 
 S tímto jazykovým arzenálem jsme zatím žádný hlubší filozofický rozhovor nevedli, ale základní lidská komunikace funguje překvapivě dobře.
 
-
-
-&nbsp;
-
 Pak jsme potkali muže, který dnešek posunul do úplně jiné kategorie.
-
-
 
 Poprvé jsme ho zahlédli u silnice. Začal na nás anglicky a vysvětloval, že je kuchař a zbylo mu nějaké jídlo.
 
-
-
 Ukazoval pečený lilek a potom hliněný hrnec plný masa a hub.
-
-
 
 Říkal, že asi deset kilometrů dál má farmu, kam jede nakrmit psy. Pokud tam dojedeme, počká na nás a jídlo nám dá. Nikolka z té nabídky nebyla úplně přesvědčená.Já slyšel hlavně dvě slova: Jídlo zdarma.
 
-
-
 Takže bylo rozhodnuto.
-
-
 
 Dalších deset kilometrů jsme bojovali proti brutálnímu protivětru, než jsme dorazili na místo. A on tam opravdu čekal.
 
-
-
 Nikola okamžitě zamířila za psy. Já za hliněným hrncem.
-
-
 
 Uvnitř bylo hovězí s houbami a po celém dni chutnalo fantasticky, ale stejně si raději dám černé uhlí.
 
-
-
 Během jídla jsme postupně skládali dohromady jeho příběh. Ano, je kuchař.Ale pracuje ve vězení. Podle něj tam vaří přibližně pro tři tisíce vězňů.
-
-
 
 Psi na farmě byli zvířata, která posbíral z ulice a o která se teď stará. Vyprávěl nám, že podmínky pro toulavé psy v Turecku nejsou zrovna jednoduché, a tak se jich několik rozhodl zachránit.
 
-
-
-&nbsp;
-
 Později nás přejel a znovu zastavil, varoval před místními "gipsy people" a nabídl nám možnost přespat u něj.
-
-
 
 Nikolka pořád tvrdila, že je trochu zvláštní. Já tvrdím, že je to jen velmi pohostinný Turek.
 
-
-
 Pravdu už se nejspíš nikdy nedozvíme, protože když se mě ptal, kam jedeme dál, vyslovil nějaký název města a já s naprostou jistotou přikývl, že přesně tam máme namířeno.
-
-
 
 O pár kilometrů později jsme odbočili úplně jinam. Teprve tehdy mi došlo, že jsem mu právě sebevědomě odsouhlasil cestu do města, které vůbec neleží na naší trase.
 
-
-
 Moje orientace podle názvů měst opět nezklamala.
 
-
-
-&nbsp;
-
 V další vesnici jsme doplnili zásoby, dali si colu a vyšlapali poslední kopec dne. Pak jsme začali hledat místo na spaní.
-
-
 
 Našli jsme kousek země mezi dvěma lesíky a polem, dost daleko od silnice a snad i od lidí. Postavili jsme stan a poprvé se uložili ke spánku na turecké půdě.
