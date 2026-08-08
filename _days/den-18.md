@@ -1,6 +1,6 @@
 ---
 day: 18
-date: 2026-08-07
+date: 2026-08-06
 title: Plovdiv, bulharské „ano-ne“ a večerní vyhlídková jízda přes Černou Horu
 from: "🇧🇬 Krasnovo "
 to: 🇧🇬 Crna Gora
