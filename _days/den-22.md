@@ -6,7 +6,7 @@ from: "🇹🇷 Ahmedbey "
 to: 🇹🇷 Incegiz
 published: true
 photos:
-  - /media/1000032552.jpg
+  - /media/1000032552.webp
 ---
 Dnešek byl speciální už od rána.
 
