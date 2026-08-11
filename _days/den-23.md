@@ -8,4 +8,4 @@ photos:
   - /media/1000032551-1.jpg
 published: true
 ---
-🇹🇷
+Tak jsme dorazili.
