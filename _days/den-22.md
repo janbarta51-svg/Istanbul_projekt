@@ -5,6 +5,8 @@ title: " Poslední celý den"
 from: "🇹🇷 Ahmedbey "
 to: 🇹🇷 Incegiz
 published: true
+photos:
+  - /media/1000032552.jpg
 ---
 Dnešek byl speciální už od rána.
 
