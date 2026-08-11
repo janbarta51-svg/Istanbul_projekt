@@ -5,7 +5,7 @@ title: "Istanbul "
 from: 🇹🇷 Incegiz
 to: "🇹🇷 Istanbul "
 photos:
-  - /media/1000032551.jpg
+  - /media/1000032551-1.jpg
 published: true
 ---
 🇹🇷
