@@ -6,7 +6,7 @@ from: "🇹🇷 Süloglu "
 to: 🇹🇷 Ahmedbey
 published: true
 photos:
-  - /media/1000032553.jpg
+  - /media/1000032553.webp
 ---
 Další tropická noc je za námi. Vstávali jsme ještě před svítáním, abychom využili aspoň pár hodin, kdy se dá normálně existovat. 
 
